@@ -81,7 +81,7 @@ const initGame = () => {
       "white"
     ); // right computer game paddle
     gameBall(ballX, ballY, 10, "yellow"); // game ball
-
+    canvasContext.font = "48px serif";
     canvasContext.fillText(playerScoreLabel, 100, canvas.height / 2);
     canvasContext.fillText(
       computerScoreLabel,
