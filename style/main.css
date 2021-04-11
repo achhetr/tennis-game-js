@@ -33,3 +33,7 @@ body {
 .game-restart:hover {
   background-color: rgb(255, 117, 117);
 }
+
+.hide {
+  display: none;
+}

@@ -6,6 +6,7 @@ const initGame = () => {
   const defaultBallSpeedY = 4;
   const yRatioSpeedWhenHit = 0.1;
   var canvas;
+  var restartBtn;
   var canvasContext;
   var ballX = 15;
   var ballY = 15;
@@ -20,6 +21,8 @@ const initGame = () => {
 
   window.onload = function () {
     canvas = document.getElementById("gameCanvas");
+    restartBtn = document.querySelector(".game-restart");
+    restartBtn.classList.add("hide");
     canvasContext = canvas.getContext("2d");
     var framesPerSecond = 30;
     setInterval(function () {
@@ -40,6 +43,7 @@ const initGame = () => {
       playerScore = 0;
       computerScore = 0;
       gamePlayMode = false;
+      restartBtn.classList.remove("hide");
     }
 
     ballSpeedX = defaultBallSpeedX;
