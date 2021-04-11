@@ -1,9 +1,10 @@
 const initGame = () => {
   var canvas;
   var canvasContext;
-  var ballX = 0;
-  var ballY = 0;
+  var ballX = 15;
+  var ballY = 15;
   var ballSpeedX = 5;
+  var ballSpeedY = 5;
   window.onload = function () {
     canvas = document.getElementById("gameCanvas");
     canvasContext = canvas.getContext("2d");
@@ -31,11 +32,15 @@ const initGame = () => {
   function moveGameBall() {
     changeDirection();
     ballX += ballSpeedX;
+    ballY += ballSpeedY;
   }
 
   function changeDirection() {
-    if (ballX > canvas.width || ballX < 0) {
+    if (ballX > canvas.width - 10 || ballX < 10) {
       ballSpeedX *= -1;
+    }
+    if (ballY > canvas.height - 10 || ballY < 10) {
+      ballSpeedY *= -1;
     }
   }
 };
