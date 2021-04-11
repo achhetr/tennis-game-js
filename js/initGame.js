@@ -5,6 +5,7 @@ const initGame = () => {
   var ballY = 15;
   var ballSpeedX = 5;
   var ballSpeedY = 5;
+  var wallBorderGap = 4;
   window.onload = function () {
     canvas = document.getElementById("gameCanvas");
     canvasContext = canvas.getContext("2d");
@@ -16,17 +17,23 @@ const initGame = () => {
   };
 
   function drawGameEverything() {
-    canvasContext.fillStyle = "black";
-    canvasContext.fillRect(0, 0, canvas.width, canvas.height);
+    colorCanvasObject(0, 0, canvas.width, canvas.height, "black"); // black screen
+    // colorCanvasObject(canvas.width / 2, canvas.height / 2, 1, 5, "white"); // game screen divider
+    colorCanvasObject(0, 0, 10, 100, "white"); // user game paddle
+    colorCanvasObject(canvas.width - 4, canvas.height - 25, 4, 25, "white"); // user game paddle
+    gameBall();
+  }
 
-    canvasContext.fillStyle = "white";
-    canvasContext.fillRect(canvas.width / 2, canvas.height / 2, 1, 5);
+  function colorCanvasObject(leftX, topY, width, height, objectColor) {
+    canvasContext.fillStyle = objectColor;
+    canvasContext.fillRect(leftX, topY, width, height);
+  }
 
-    canvasContext.fillStyle = "white";
-    canvasContext.fillRect(0, 1, 4, 25);
-
+  function gameBall() {
     canvasContext.fillStyle = "yellow";
-    canvasContext.fillRect(ballX, ballY, 4, 3);
+    canvasContext.beginPath();
+    canvasContext.arc(ballX, ballY, 8, 0, Math.PI * 2, true);
+    canvasContext.fill();
   }
 
   function moveGameBall() {
@@ -36,10 +43,10 @@ const initGame = () => {
   }
 
   function changeDirection() {
-    if (ballX > canvas.width - 10 || ballX < 10) {
+    if (ballX > canvas.width - wallBorderGap || ballX < wallBorderGap) {
       ballSpeedX *= -1;
     }
-    if (ballY > canvas.height - 10 || ballY < 10) {
+    if (ballY > canvas.height - wallBorderGap || ballY < wallBorderGap) {
       ballSpeedY *= -1;
     }
   }
