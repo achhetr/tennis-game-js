@@ -88,6 +88,7 @@ const initGame = () => {
       canvas.width - 100,
       canvas.height / 2
     );
+    drawNet();
   }
 
   function colorCanvasObject(leftX, topY, width, height, objectColor) {
@@ -142,6 +143,12 @@ const initGame = () => {
         playerScore++;
         ballReset();
       }
+    }
+  }
+
+  function drawNet() {
+    for (let index = 0; index < canvas.height; index += 40) {
+      colorCanvasObject(canvas.width / 2 - 1, index, 2, 20, "white");
     }
   }
 };
