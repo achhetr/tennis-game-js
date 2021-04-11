@@ -1,7 +1,7 @@
 const initGame = () => {
   const wallBorderGap = 4;
   const paddleHeight = 100;
-  const winningScore = 10;
+  const winningScore = 1;
   const defaultBallSpeedX = 5;
   const defaultBallSpeedY = 4;
   const yRatioSpeedWhenHit = 0.1;
@@ -82,10 +82,10 @@ const initGame = () => {
     ); // right computer game paddle
     gameBall(ballX, ballY, 10, "yellow"); // game ball
     canvasContext.font = "48px serif";
-    canvasContext.fillText(playerScoreLabel, 100, canvas.height / 2);
+    canvasContext.fillText(playerScoreLabel, 300, canvas.height / 2);
     canvasContext.fillText(
       computerScoreLabel,
-      canvas.width - 100,
+      canvas.width - 300,
       canvas.height / 2
     );
     drawNet();
